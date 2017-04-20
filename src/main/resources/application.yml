@@ -1,0 +1,15 @@
+logging:
+    level.org.hibernate: ERROR
+    level.org.springframework.web: ERROR
+    
+    
+cloud.aws:
+     stack:
+        auto: false
+     region:
+         auto: false
+         static: us-west-2
+     credentials:
+         instanceProfile: false
+         accessKey: tst
+         secretKey: tst

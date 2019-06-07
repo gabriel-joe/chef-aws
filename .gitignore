@@ -1,17 +1,10 @@
-.gradle/
-log*
-*logs
-build/
-/.gradle/*
-2.13/*
-*bin/*
+*.settings
 logs/*
 logs
-
-
 .gradle
 /build/
-
+/bin/*
+bin
 # Ignore Gradle GUI config
 gradle-app.setting
 

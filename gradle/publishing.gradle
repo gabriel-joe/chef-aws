@@ -1,0 +1,27 @@
+apply plugin: 'maven-publish'
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact distTar
+			artifact distZip
+		}
+	}
+}
+
+publishing {
+	repositories {
+		maven {
+			if (project.version.endsWith('-SNAPSHOT')) {
+				url property('publishing.repository.snapshot')
+			} else {
+				url property('publishing.repository.release')
+			}
+
+			credentials {
+				username property('publishing.repository.credentials.username')
+				password property('publishing.repository.credentials.password')
+			}
+		}
+	}
+}

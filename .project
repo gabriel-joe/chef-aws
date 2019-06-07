@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>gcm-portal-executor-chef</name>
-	<comment>Project gcm-portal-executor-chef created by Buildship.</comment>
+	<name>chef-aws</name>
+	<comment>Project chef-aws created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

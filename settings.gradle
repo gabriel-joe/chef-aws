@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'gcm-portal-executor-chef'
+rootProject.name = 'chef-aws'

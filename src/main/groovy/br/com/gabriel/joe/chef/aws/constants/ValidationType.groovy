@@ -1,0 +1,18 @@
+package br.com.gabriel.joe.chef.aws.constants
+
+enum ValidationType {
+
+	CHECK_AGENT_VERSION("CHECK_AGENT_VERSION"),
+	CHECK_SERVERS_DISK_SPACE("CHECK_SERVERS_DISK_SPACE"),
+	CHECK_DATABASE_CONNECTION("CHECK_DATABASE_CONNECTION"),
+	CHECK_DATABASE_TABLESPACE("CHECK_DATABASE_TABLESPACE"),
+	CHECK_DATABASE_USER_MASTER("CHECK_DATABASE_USER_MASTER")
+
+	String name;
+
+	ValidationType(String name){
+		this.name = name;
+	}
+
+
+}

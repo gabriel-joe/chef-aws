@@ -1,15 +1,54 @@
-logging:
-    level.org.hibernate: ERROR
-    level.org.springframework.web: ERROR
+--- 
+address:
+   queue: 
+     name:
+        send: 
+        listener: 
+     url:
+        listener: 
+        send: 
+  
+aws: 
+  active: true
+  urlBase: "http://s3.amazonaws.com"
+  
+cloud.aws: 
+  credentials: 
+    accessKey: 
+    instanceProfile: false
+    secretKey: 
+  region: 
+    auto: false
+    static: sa-east-1
+  stack: 
+    auto: false
     
-    
-cloud.aws:
-     stack:
-        auto: false
-     region:
-         auto: false
-         static: us-west-2
-     credentials:
-         instanceProfile: false
-         accessKey: tst
-         secretKey: tst
+database: 
+  jdbcDialect: org.hibernate.dialect.OracleDialect
+  jdbcDriverClassName: oracle.jdbc.driver.OracleDriver
+
+logging: 
+  level.org.hibernate: ERROR
+  level.org.springframework.web: ERROR
+  
+security: 
+  api: 
+    active: false
+    passwordKey: Content
+    url: "http://localhost:8080"
+    userKey: user
+  bootstrap:
+    proxy:
+
+winrm: 
+  shell: 
+    active: false
+    type: powershell
+  authentication:
+     protocol:
+  location:
+     installation: c:/chef/chef-installation.json
+     balancer: c:/chef/chef-installation-balancer.json
+     
+node:
+   recipeDefault: soulmvwindows::set_mv_home

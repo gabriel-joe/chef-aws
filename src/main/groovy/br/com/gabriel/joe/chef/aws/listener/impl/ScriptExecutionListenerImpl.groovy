@@ -1,16 +1,13 @@
 package br.com.gabriel.joe.chef.aws.listener.impl
 
-import br.com.mv.etl.entities.DBScript
-import br.com.mv.etl.listener.ScriptExecutionListener
-import br.com.mv.etl.loading.model.RunnigScript
-import br.com.mv.etl.loading.model.StatusRunnigScript
+import br.com.gabriel.joe.chef.aws.domain.DBScript
 import br.com.gabriel.joe.chef.aws.domain.MessageHeader
 import br.com.gabriel.joe.chef.aws.service.DatabaseService
 import br.com.gabriel.joe.chef.aws.service.LogService
 import br.com.gabriel.joe.chef.aws.service.SqsService
 
 
-class ScriptExecutionListenerImpl implements ScriptExecutionListener {
+class ScriptExecutionListenerImpl {
 	
 	
 	DatabaseService databaseService
@@ -57,14 +54,14 @@ class ScriptExecutionListenerImpl implements ScriptExecutionListener {
 		
 	}
 
-	public void afterExecution(String scriptName, RunnigScript runningScript) {
+	public void afterExecution(String scriptName, def runningScript) {
 		
-		String msg = "Script " + scriptName + " -> " + runningScript.status
+		/*String msg = "Script " + scriptName + " -> " + runningScript.status
 		
 		if (runningScript.status in [StatusRunnigScript.ALREADY_SUCCESSFULLY_EXECUTED, StatusRunnigScript.ALREADY_EXECUTED_WITH_FAIL])
-			msg = "Script " + scriptName + " -> ja executado no " + runningScript.product + "." + runningScript.version  + " com " + runningScript.status
+			msg = "Script " + scriptName + " -> ja executado no " + runningScript.product + "." + runningScript.version  + " com " + runningScript.status*/
 				
-		logService.info (messageHeader,msg)
+		logService.info (messageHeader,"")
 			
 		
 	}

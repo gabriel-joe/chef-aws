@@ -9,12 +9,10 @@ import org.apache.commons.io.IOUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-import br.com.mv.etl.CustomerETLTool
-import br.com.mv.etl.entities.DBScript
-import br.com.mv.etl.util.DBUtils
 import br.com.gabriel.joe.chef.aws.config.PropertiesConfig
 import br.com.gabriel.joe.chef.aws.constants.Constants
 import br.com.gabriel.joe.chef.aws.constants.ResultType
+import br.com.gabriel.joe.chef.aws.domain.DBScript
 import br.com.gabriel.joe.chef.aws.domain.DatabaseInformation
 import br.com.gabriel.joe.chef.aws.domain.MessageHeader
 import br.com.gabriel.joe.chef.aws.domain.Product
@@ -175,9 +173,7 @@ class DatabaseServiceImpl implements DatabaseService {
 		logService.info (messageHeader,"Atualizando banco de dados...")
 		log.info "Updating database..."
 
-		Integer invalidObjects = CustomerETLTool.countInvalidObjects(getJdbcUrl(databaseInformation),
-				databaseInformation.cdUserInstall,
-				databaseInformation.passwordInstall)
+		Integer invalidObjects = 0 //CustomerETLTool.countInvalidObjects(getJdbcUrl(databaseInformation),databaseInformation.cdUserInstall,databaseInformation.passwordInstall)
 
 		log.info "Invalid objects before update database: " + invalidObjects
 		logService.info (messageHeader,"Total de objetos invalidos antes da atualizacao: " + invalidObjects)
@@ -191,7 +187,7 @@ class DatabaseServiceImpl implements DatabaseService {
 		if (scripts.empty) {
 			logService.info (messageHeader,"Nenhum script encontrado")
 		} else {
-			CustomerETLTool.processScripts(
+			/*CustomerETLTool.processScripts(
 					listener,
 					scripts,
 					getJdbcUrl(databaseInformation),
@@ -199,7 +195,7 @@ class DatabaseServiceImpl implements DatabaseService {
 					databaseInformation.passwordInstall,
 					logFilePath,
 					messageHeader.clientId,
-					messageHeader.environmentName)
+					messageHeader.environmentName)*/
 		}
 	}
 
@@ -212,9 +208,7 @@ class DatabaseServiceImpl implements DatabaseService {
 		String[] schemas = ["DBAMV", "DBASGU", "DBAPS", "MVINTEGRA"]
 		int increment = 1
 
-		Integer invalidObjectsTotal = CustomerETLTool.countInvalidObjects(getJdbcUrl(databaseInformation),
-				databaseInformation.cdUserInstall,
-				databaseInformation.passwordInstall)
+		Integer invalidObjectsTotal = 0 //CustomerETLTool.countInvalidObjects(getJdbcUrl(databaseInformation),databaseInformation.cdUserInstall,databaseInformation.passwordInstall)
 		
 		log.info "Invalid objects after update database: " + invalidObjectsTotal
 		logService.info (messageHeader,"Total de objetos invalidos apos fase de execucao dos scripts: " + invalidObjectsTotal)
@@ -248,19 +242,16 @@ class DatabaseServiceImpl implements DatabaseService {
 
 			while (invalidObjectsTotal > 0) {
 				
-				CustomerETLTool.processScripts(null,scripts, 
+				/*CustomerETLTool.processScripts(null,scripts, 
 					getJdbcUrl(databaseInformation), 
 					databaseInformation.cdUserInstall, 
 					databaseInformation.passwordInstall, 
 					logFilePath, 
 					false,
 					messageHeader.clientId,
-					messageHeader.environmentName)
+					messageHeader.environmentName)*/
 
-				invalidObjectsPartial = CustomerETLTool.countInvalidObjects(
-					getJdbcUrl(databaseInformation), 
-					databaseInformation.cdUserInstall, 
-					databaseInformation.passwordInstall)
+				invalidObjectsPartial = //CustomerETLTool.countInvalidObjects(getJdbcUrl(databaseInformation),databaseInformation.cdUserInstall,databaseInformation.passwordInstall)
 
 				log.info "Invalid objects after compile database: " + invalidObjectsPartial
 				logService.info (messageHeader,"Restaram ${invalidObjectsPartial} objetos sem compilar!")
@@ -392,7 +383,7 @@ class DatabaseServiceImpl implements DatabaseService {
 					if (scriptPackage.scripts == null)
 						scriptPackage.scripts = new TreeMap<String, DBScript>()
 
-					String nameScript = DBUtils.getScriptName(script.name)
+					String nameScript = script.name //DBUtils.getScriptName(script.name)
 					scriptPackage.scripts[nameScript] = script
 
 					if (is != null)

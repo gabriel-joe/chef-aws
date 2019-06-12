@@ -1,8 +1,8 @@
 # chef-aws
 Spring boot application with CHEF and Amazon web services.
 
-To use a SQS Implementation, you need to configure these properties on application.yml:
 
+To use Chef Server Implementantion you need to configure these properties in application.properties
 
 ### CHEF SERVER CONFIGURATIONS
         chef.server.ip=
@@ -10,6 +10,8 @@ To use a SQS Implementation, you need to configure these properties on applicati
         chef.server.user=
         chef.server.password=
   
+
+To use a SQS Implementation, you need to configure these properties in application.yml:
 
 ### AWS Credentials
 
